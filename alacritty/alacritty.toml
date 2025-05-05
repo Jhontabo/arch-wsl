@@ -12,3 +12,10 @@ dynamic_padding = true  # Opcional: ajusta el padding dinámicamente
 style = { shape = "Beam", blinking = "On" }
 blink_interval = 500
 
+
+[font.normal]
+family = "IosevkaTerm NF"
+
+
+[env]
+TERM = "xterm-256color"
