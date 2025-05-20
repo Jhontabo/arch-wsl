@@ -24,6 +24,7 @@ ZSH_THEME="robbyrussell"
 alias update='sudo dnf update -y'
 alias upgrade='sudo dnf upgrade -y'
 alias fast='fastfetch'
+alias nvimconfig='nvim ~/.config/nvim'
 
 
 ## Laravel
