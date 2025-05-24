@@ -9,7 +9,7 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
 
 # Crear archivo de log
 $logFile = "$env:USERPROFILE\Desktop\install_apps_log.txt"
-Add-Content -Path $logFile -Value ("Inicio de instalación: $(Get-Date)")
+Add-Content -Path $logFile -Value ("Inicio de instalación: " + (Get-Date))
 
 # Lista de aplicaciones a instalar
 $apps = @(
@@ -58,11 +58,11 @@ $apps = @(
 )
 
 # Confirmación del usuario
-Write-Host "Aplicaciones a instalar: $($apps -join ', ')"
+Write-Host ("Aplicaciones a instalar: " + ($apps -join ', '))
 $confirm = Read-Host "¿Instalar todas las aplicaciones? (S/N)"
 if ($confirm -ne 'S') {
     Write-Host "Instalación cancelada." -ForegroundColor Yellow
-    Add-Content -Path $logFile -Value ("Instalación cancelada por el usuario: $(Get-Date)")
+    Add-Content -Path $logFile -Value ("Instalación cancelada por el usuario: " + (Get-Date))
     exit
 }
 
@@ -74,26 +74,26 @@ function Install-App {
     # Verificar si la aplicación ya está instalada
     $installed = choco list --local-only | Select-String $AppName
     if ($installed) {
-        Write-Host "$AppName ya está instalado. Omitiendo..." -ForegroundColor Yellow
-        Add-Content -Path $logFile -Value ("$AppName ya está instalado. Omitiendo: $(Get-Date)")
+        Write-Host ($AppName + " ya está instalado. Omitiendo...") -ForegroundColor Yellow
+        Add-Content -Path $logFile -Value ($AppName + " ya está instalado. Omitiendo: " + (Get-Date))
         return
     }
 
-    Write-Host "Instalando $AppName..."
-    Add-Content -Path $logFile -Value ("Instalando $AppName: $(Get-Date)")
+    Write-Host ("Instalando " + $AppName + "...")
+    Add-Content -Path $logFile -Value ("Instalando " + $AppName + ": " + (Get-Date))
     try {
         # Capturar salida y errores del comando choco install
         $output = choco install $AppName -y 2>&1
         if ($LASTEXITCODE -eq 0) {
-            Write-Host "$AppName instalado correctamente." -ForegroundColor Green
-            Add-Content -Path $logFile -Value ("$AppName instalado correctamente.")
+            Write-Host ($AppName + " instalado correctamente.") -ForegroundColor Green
+            Add-Content -Path $logFile -Value ($AppName + " instalado correctamente.")
         } else {
-            Write-Warning "Error al instalar $AppName. Detalle: $output"
-            Add-Content -Path $logFile -Value ("Error al instalar $AppName. Detalle: $output")
+            Write-Warning ("Error al instalar " + $AppName + ". Detalle: " + $output)
+            Add-Content -Path $logFile -Value ("Error al instalar " + $AppName + ". Detalle: " + $output)
         }
     } catch {
-        Write-Error ("Excepción al instalar $AppName: $($_)")
-        Add-Content -Path $logFile -Value ("Excepción al instalar $AppName: $($_)")
+        Write-Error ("Excepción al instalar " + $AppName + ": " + $_)
+        Add-Content -Path $logFile -Value ("Excepción al instalar " + $AppName + ": " + $_)
     }
 }
 
@@ -103,6 +103,6 @@ foreach ($app in $apps) {
 }
 
 # Mensaje final
-Write-Host "Instalación completada. Revisa el log en $logFile." -ForegroundColor Cyan
-Add-Content -Path $logFile -Value ("Instalación completada: $(Get-Date)")
+Write-Host ("Instalación completada. Revisa el log en " + $logFile) -ForegroundColor Cyan
+Add-Content -Path $logFile -Value ("Instalación completada: " + (Get-Date))
 
