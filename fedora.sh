@@ -7,7 +7,7 @@ sudo dnf update -y || true
 echo "===== Installing basic packages ====="
 BASIC_PACKAGES=(
   zsh htop btop cmatrix cava fastfetch
-  gcc fzf ripgrep fd-find neovim unzip
+  gcc fzf ripgrep fd-find neovim unzip vlc
 )
 
 for pkg in "${BASIC_PACKAGES[@]}"; do
