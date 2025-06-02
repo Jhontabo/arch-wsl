@@ -51,7 +51,7 @@ FLATPAK_APPS=(
   com.google.Chrome com.spotify.Client org.gimp.GIMP us.zoom.Zoom
   com.anydesk.Anydesk io.dbeaver.DBeaverCommunity
   org.filezillaproject.Filezilla net.ankiweb.Anki
-  com.visualstudio.code
+  com.visualstudio.code com.obsproject.Studio
 )
 
 for app in "${FLATPAK_APPS[@]}"; do
