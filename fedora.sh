@@ -46,12 +46,22 @@ fi
 
 echo "===== Installing extra software from Flathub ====="
 FLATPAK_APPS=(
-  org.onlyoffice.desktopeditors com.rtosta.zapzap org.apache.netbeans
-  md.obsidian.Obsidian org.telegram.desktop com.getpostman.Postman
-  com.google.Chrome com.spotify.Client org.gimp.GIMP us.zoom.Zoom
-  com.anydesk.Anydesk io.dbeaver.DBeaverCommunity
-  org.filezillaproject.Filezilla net.ankiweb.Anki
-  com.visualstudio.code com.obsproject.Studio
+  org.onlyoffice.desktopeditors
+  com.rtosta.zapzap
+  org.apache.netbeans
+  md.obsidian.Obsidian
+  org.telegram.desktop
+  com.getpostman.Postman
+  com.google.Chrome
+  com.spotify.Client
+  org.gimp.GIMP
+  com.anydesk.Anydesk
+  io.dbeaver.DBeaverCommunity
+  org.filezillaproject.Filezilla
+  net.ankiweb.Anki
+  com.visualstudio.code
+  com.obsproject.Studio
+  com.sindresorhus.Caprine
 )
 
 for app in "${FLATPAK_APPS[@]}"; do
