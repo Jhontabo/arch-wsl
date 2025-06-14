@@ -93,6 +93,10 @@ FLATPAK_APPS=(
   com.visualstudio.code
   com.obsproject.Studio
   com.sindresorhus.Caprine
+  com.valvesoftware.Steam
+  net.lutris.Lutris
+  com.heroicgameslauncher.hgl
+
 )
 
 for app in "${FLATPAK_APPS[@]}"; do
