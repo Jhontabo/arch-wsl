@@ -6,7 +6,7 @@ sudo apt update && sudo apt upgrade -y
 
 echo "===== Installing base packages ====="
 BASIC_PACKAGES=(
-  zsh htop btop cmatrix cava
+  tree kitty zsh htop btop cmatrix cava
   gcc fzf ripgrep fd-find unzip vlc
   python3 python3-pip
 )
@@ -14,8 +14,6 @@ BASIC_PACKAGES=(
 for pkg in "${BASIC_PACKAGES[@]}"; do
   sudo apt install -y "$pkg" || echo "Warning: Failed to install $pkg, continuing..."
 done
-
-# fd is usually already included in Linux Mint
 
 echo "===== Installing PHP ====="
 PHP_PACKAGES=(
