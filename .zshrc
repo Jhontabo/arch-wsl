@@ -13,7 +13,7 @@ ZSH_THEME="robbyrussell"
 
 # Cowsay 
 
-cowsay -f tux "¡Welcome, Jhontabo!"
+cowsay -f tux "¡Welcome, $USER!"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -24,7 +24,7 @@ cowsay -f tux "¡Welcome, Jhontabo!"
 
 # Arch
 
-alias up='sudo pacman -Syu'
+alias update='sudo pacman -Syu'
 alias fast='fastfetch'
 alias matrix='cmatrix'
 
@@ -39,6 +39,12 @@ alias tst='php artisan test'
 alias cache='php artisan config:cache'
 alias fresh='php artisan migrate:fresh'
 
+## alias git
+
+
+alias gs='git status'
+alias ga='git add .'
+
 # Plugins
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
@@ -46,11 +52,25 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 
-export NVM_DIR="$HOME/.config/nvm"
+
+# Homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
+export PATH="$PATH:/opt/flutter/bin"
+
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
-# Homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+
+## change to windows user 
+
+
+alias gowin='cd /mnt/c/Users/jhontabo'
